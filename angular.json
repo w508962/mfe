@@ -1,0 +1,164 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "yeti-ui-payment": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+				"@schematics/angular:application": {
+					"strict": true
+				}
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "payment",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+							"path": "./webpack-configs/webpack.config.dev.ts"
+						},
+						"outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss",
+							"node_modules/@wexinc/fontawesome/fontawesome-pro/css/all.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+							"aot": true,
+							"baseHref": "/mfe-payment/",
+              "budgets": [
+                {
+                  "type": "initial",
+									"maximumWarning": "3mb",
+									"maximumError": "4mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+									"maximumWarning": "350kb",
+									"maximumError": "350kb"
+                }
+              ],
+              "customWebpackConfig": {
+								"path": "./webpack-configs/webpack.config.prod.ts"
+							},
+							"buildOptimizer": true,
+							"optimization": true,
+							"vendorChunk": false,
+							"extractLicenses": true,
+							"sourceMap": false,
+							"namedChunks": false,
+							"outputHashing": "all"
+            },
+            "development": {
+							"customWebpackConfig": {
+								"path": "./webpack-configs/webpack.config.dev.ts"
+							},
+							"baseHref": "/",
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true,
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.dev.ts"
+								}
+							]
+						},
+						"dynamic-development": {
+							"aot": true,
+							"customWebpackConfig": {
+								"path": "./webpack-configs/webpack.config.dynamic-dev.ts"
+							},
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+					"builder": "@angular-builders/custom-webpack:dev-server",
+          "configurations": {
+            "production": {
+							"browserTarget": "yeti-ui-payment:build:production"
+            },
+            "development": {
+							"browserTarget": "yeti-ui-payment:build:development",
+							"port": 4207
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "yeti-ui-payment:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+						"codeCoverage": true,
+						"codeCoverageExclude": [
+							"src/environments/**",
+              "src/app/payment/shared/services/payment",
+              "src/app/payment/shared/services/new-payment.service"
+            ],
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+				},
+				"lint": {
+					"builder": "@angular-eslint/builder:lint",
+					"options": {
+						"lintFilePatterns": [
+							"src/**/*.ts",
+							"src/**/*.html"
+						]
+        }
+      }
+    }
+  }
+	},
+	"defaultProject": "yeti-ui-payment",
+	"cli": {
+		"analytics": false,
+		"schematicCollections": [
+			"@ngrx/schematics"
+		]
+}
+}

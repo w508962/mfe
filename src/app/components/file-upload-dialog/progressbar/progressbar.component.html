@@ -1,0 +1,14 @@
+<div class="progress-bar">
+    <div class="content">
+        <div class="icon">
+            <fa-icon [icon]="faFileExcel" class="file-icon"></fa-icon>
+        </div>
+        <div class="file-name-section">
+           <p>{{ fileName }}</p>
+           <p-progressBar [value]="value" [showValue]="false" [style]="{ height: '2px'}"></p-progressBar>
+        </div>
+        <div (click)="cancelUpload()" class="close-icon">
+            <fa-icon [icon]="faTimes" class="upload-icon"></fa-icon>
+        </div>
+    </div>
+</div>

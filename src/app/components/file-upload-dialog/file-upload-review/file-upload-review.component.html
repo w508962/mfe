@@ -1,0 +1,74 @@
+<div class="file-upload-review-container">
+	<div class="file-upload-review-body">
+		<div class="file-name">
+			{{ fileName }}
+		</div>
+	
+		<div class="file-message-container grid m-0">
+			<div class="col-9 p-0">
+				<fa-icon [icon]="faCircleCheck" class="icon success"></fa-icon>
+				<span>{{ translocoData['fileUploadItemsReadyCreate'] }}</span>
+			</div>
+			<div class="col-3 p-0 text-right">{{ totalSuccessfulItems }}</div>
+		</div>
+	
+		<div class="failed-files" *ngIf="totalFailedItems > 0">
+			<div class="file-message-container grid m-0">
+				<div class="col-9 p-0">
+					<fa-icon [icon]="faTriangleExclamation" class="icon warning"></fa-icon>
+					<span>{{ translocoData['fileUploadItemsWithErrors'] }}</span>
+				</div>
+				<div class="col-3 p-0 text-right">{{ totalFailedItems }}</div>
+			</div>
+	
+			<div class="file-failed-message">
+				{{ translocoData['fileUploadFailedMessage'] }}
+			</div>
+		
+			<div class="file-failed-btn-container" autoid="file_error_button_show_additional_messages"
+					*ngIf="!errorsVisible" (click)="errorsVisible = true">
+				<fa-icon [icon]="faEye" class="eye-icon"></fa-icon>
+				<span class="inner-tag-text">
+					{{ translocoData['showErrors'] }}
+				</span>
+			</div>
+		
+			<div class="file-failed-btn-container" autoid="file_error_button_hide_additional_messages"
+					*ngIf="errorsVisible" (click)="errorsVisible = false">
+				<fa-icon [icon]="faEyeSlash" class="eye-icon"></fa-icon>
+				<span class="inner-tag-text">
+					{{ translocoData['hideErrors'] }}
+				</span>
+			</div>
+		
+			<div class="file-failed-details" *ngIf="errorsVisible">
+				<div class="file-failed-row grid m-0" *ngFor="let message of failedMessages">
+					<div class="col-4 p-0">{{ message.record }}</div>
+					<div class="col-8 p-0 text-right">{{ message.message }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="file-upload-review-footer">
+		<div class="file-upload-review-actions text-right">
+			<p-button
+				pRipple
+				autoid="file_upload_review_button_cancel"
+				id="fileUploadCancel"
+				class="cancel-button"
+				[label]="translocoData['cancel']"
+				(click)="cancel()">
+			</p-button>
+
+			<p-button
+				pRipple
+				autoid="file_upload_review_button_confirm"
+				id="fileUploadConfirm"
+				class="confirm-button"
+				[label]="translocoData['upload']"
+				(click)="upload()">
+			</p-button>
+		</div>
+	</div>
+</div>

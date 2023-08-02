@@ -1,0 +1,31 @@
+<ng-container *transloco="let t">
+	<p-fileUpload
+		#fileUpload
+		mode="advanced"
+		name="file"
+		url="www.test.com"
+		[accept]="acceptedFileTypes.join(', ')"
+		[maxFileSize]="maxFileSize"
+		[multiple]="false"
+		[showUploadButton]="true"
+		[showCancelButton]="true"
+		(onSelect)="onSelect($event)">
+		>
+		<ng-template pTemplate="content">
+			<div class="file-upload-content">
+				<div>
+					<fa-icon [icon]="faFileUpload" class="upload-icon"></fa-icon>
+					<span class="upload-label">{{ t('uploadFile') }}</span>
+				</div>
+				<div>
+					<span class="drag-drop-label">{{ t('dragDropOr') }} </span>
+					<span class="browse-label" (click)="fileUpload.choose()">{{ t('browse') }}</span>
+				</div>
+			</div>
+		</ng-template>
+	</p-fileUpload>
+	<div class="file-limits">
+		<div>{{ t('fileUploadSupportedFiles', { supportedFiles: acceptedFileTypes.join(', ') }) }}</div>
+		<div>{{ t('fileUploadMaxFileSize', { fileSize: (maxFileSize / 1000) + ' KB' }) }}</div>
+	</div>
+</ng-container>

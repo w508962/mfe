@@ -1,0 +1,9 @@
+<div [ngSwitch]="step">
+	<payment-file-upload (fileSelected)="handleFileSelection($event)" *ngSwitchCase="fileUploadSteps.File_Upload"></payment-file-upload>
+	<payment-upload-progressbar *ngSwitchCase="fileUploadSteps.File_Upload_Validation"
+		[fileName]="fileName" (uploadCancelled)="cancelUpload()" (uploadCompleted)="uploadCompleted()"></payment-upload-progressbar>
+	<payment-file-upload-review *ngSwitchCase="fileUploadSteps.File_Upload_Review"
+		[fileName]="fileName" [totalSuccessfulItems]="fileReviewMock.successfulItems" [totalFailedItems]="fileReviewMock.failedItems"
+		[failedMessages]="fileReviewMock.failedMessages" (closeDialog)="closeDialog()"
+	></payment-file-upload-review>
+</div>

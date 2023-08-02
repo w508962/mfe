@@ -1,0 +1,49 @@
+.content {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+    width: 29rem;
+    height: 3rem;
+    border: 1px solid var(--phoenix-base-color-slate-blue-30);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.file-name-section {
+   width: 23.25rem;
+}
+
+.progress-bar {
+    width: 100%;
+}
+
+.close-icon {
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    padding: 0.25rem;
+}
+
+::ng-deep .progress-bar .p-progressbar .p-progressbar-value {
+    background: var(--phoenix-base-color-success-50) !important;
+}
+
+::ng-deep .progress-bar .p-dialog-header-close-icon {
+    margin-right: 0.5rem;
+}
+
+.icon .file-icon {
+    color: var(--phoenix-base-color-success-50);
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.close-icon {
+    font-size: 1rem !important;
+    color: var(--phoenix-base-color-slate-blue-70) !important;
+    cursor: pointer;
+    i {
+        font-weight: 400 !important;
+    }
+}

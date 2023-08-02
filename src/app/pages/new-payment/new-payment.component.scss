@@ -1,0 +1,434 @@
+@use 'primeflex/primeflex.scss';
+@use '../../payment/shared/styles/mixins' as *;
+
+
+::ng-deep .p-dialog .p-dialog-header {
+    border-bottom: 0.063rem solid #E4E6E9 !important;
+    @extend .h-4rem;
+    @extend .w-full;
+    justify-content: start !important;
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+    padding: 1rem !important;
+}
+
+.no-border-header {
+    border-bottom: none !important;
+}
+
+@media (min-width:90rem) {
+    ::ng-deep .p-dialog {
+        max-height: unset !important;
+        top: auto;
+        right: auto;
+        left: auto;
+        bottom: 0;
+        position: fixed;
+    }
+}
+
+::ng-deep .p-confirm-dialog {
+    position: relative;
+    top: 3.25rem !important;
+
+    .p-dialog-header {
+        border-radius: 0.5rem 0.5rem 0 0 !important;
+    }
+
+    .p-dialog-header .p-dialog-title {
+        text-align: left !important;
+        padding-left: 2.25rem;
+        font-size: var(--font-size-h5) !important;
+    }
+
+    .p-dialog-footer {
+        @extend .border-none;
+        padding: 0 1.5rem 1rem 1.5rem !important;
+        padding: 0 1.5rem 1rem 1.5rem !important;
+        border-radius: 0 0 0.5rem 0.5rem !important;
+    }
+}
+
+::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
+    @include colors(var(--c-neutral-70));
+    @extend .mr-auto;
+    @extend .w-full;
+    @extend .text-left;
+    font-size: 1.125rem !important;
+    color:#192631 !important;
+    letter-spacing: var(--letter-spacing-h4);
+    font-weight: 600 !important;
+    line-height: var(--line-height-small);
+}
+
+
+
+::ng-deep .p-dialog .p-dialog-content {
+    border-bottom-right-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+}
+
+::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon:enabled:hover {
+    @include colors(rgb(52, 58, 64));
+    @include bgcolors(var(--c-neutral-00));
+    @extend .border-transparent;
+}
+
+::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon:focus {
+    box-shadow: none;
+}
+
+::ng-deep .p-dialog-mask {
+    @include bgcolors(rgb(2, 13, 36, 0.3));
+    backdrop-filter: blur(0.25rem);
+}
+
+::ng-deep .p-dialog .p-dialog-footer button .p-button-label {
+    display: none;
+}
+
+::ng-deep .p-dialog .p-dialog-footer button {
+    @extend .mt-0;
+    @extend .mr-2;
+    @extend .mb-0;
+    @extend .ml-0;
+    @extend .pt-2;
+    @extend .pb-2;
+    @extend .pl-3;
+    @extend .pr-3;
+    @extend .font-semibold;
+    float: right !important;
+    font-family: var(--font-sans-serif);
+    font-size: var(--font-size-body-copy-condensed) !important;
+    background-color: var(--c-brandprimary-50);
+    line-height: var(--line-height-small);
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    border: 0.063rem solid var(--c-brandprimary-50);
+}
+
+::ng-deep .p-component .p-dialog .p-dialog-footer button {
+    @extend .p-0;
+    background-color: transparent !important;
+    border-color: transparent;
+    @extend .mr-0;
+    // color: var(--c-neutral-00);
+    @extend .font-semibold;
+    border-radius: 0.5rem;
+    height: 2.5rem;
+    border: none !important;
+}
+
+.btn-next {
+    @include bgcolors(var(--c-brandprimary-50));
+    @extend .flex;
+    @extend .flex-row;
+    @extend .justify-content-center;
+    @extend .align-items-center;
+    @extend .border-round-lg;
+    @extend .flex-none;
+    @extend .flex-order-0;
+    @extend .flex-grow-0;
+    box-sizing: border-box;
+    height: 2.5rem;
+}
+
+.p-button:disabled {
+    @include colors(#9a9ea7);
+    @include bgcolors(var(--c-neutral-10));
+    @extend .border-round-lg;
+    border: 0.063rem solid var(--c-neutral-10);
+    ;
+}
+
+.footer-bottom-fixed {
+    @extend .fixed;
+    @extend .w-full;
+    @extend .bottom-0;
+    @extend .left-0;
+    border-top: 0.063rem solid #E4E6E9 !important;
+    height: 4.5rem !important;
+    padding: 1rem !important;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    z-index: 3;
+    display: block;
+}
+
+.header-top-fixed {
+    @extend .fixed;
+    @extend .w-full;
+    @extend .top-0;
+    @extend .left-0;
+}
+
+.close-icon {
+    color: #1D2C38;
+    @include typography(var(--font-sans-serif), var(--font-weight-regular), var(--font-weight-regular), var(--font-size-body-copy), var(--line-height-xsmall));
+    float: right;
+    @extend .cursor-pointer;
+    @extend .flex;
+    @extend .justify-content-end;
+    @extend .w-1rem;
+    margin-left: auto;
+    padding: 0 0.1875rem;
+}
+
+.p-dialog-header {
+    &.header-top-fixed {
+        @extend .flex;
+        @extend .justify-content-between;
+        border-bottom: 0.063rem solid #E4E6E9 !important;
+    }
+}
+
+.btn-back {
+    @extend .cursor-pointer;
+    @extend .flex;
+    @extend .align-items-center;
+}
+
+.btn-back .pi {
+    font-size: var(--font-size-body-copy-condensed) !important;
+    width: 0.875rem !important;
+}
+
+.mccs-back {
+    font-family: var(--font-sans-serif);
+    font-style: var(--font-weight-regular);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-body-copy-condensed);
+    line-height: var(--line-height-small);
+    letter-spacing: var(--letter-spacing-body-copy-condensed);
+    color: var(--c-neutral-70);
+}
+
+::ng-deep .p-dialog-mask .p-dialog {
+    border: none !important;
+}
+
+.add-payment-modal {
+    @extend .relative;
+    ::ng-deep .p-dialog {
+        width: 27.5rem !important;
+        @extend .border-none;
+        box-shadow: 0rem 0.5rem 1rem rgba(2, 13, 36, 0.15), 0rem 0rem 0.0625rem rgba(2, 13, 36, 0.3);
+    }
+
+    ::ng-deep .p-dialog .p-dialog-header {
+        padding: 1.5rem 1.5rem 0 1.5rem !important;
+        @extend .border-none;
+        border-start-start-radius: 0.5rem;
+        border-start-end-radius: 0.5rem;
+        @extend .relative;
+        @extend .h-auto;
+    }
+
+    ::ng-deep .p-dialog .p-dialog-content {
+        padding: 1rem 1.5rem 1rem 1.5rem !important;
+        @extend .border-noround;
+    }
+
+    ::ng-deep .p-dialog.p-confirm-dialog .p-confirm-dialog-message {
+        font-family: var(--font-sans-serif);
+        font-style: var(--font-weight-regular);
+        font-weight: var(--font-weight-regular);
+        font-size: var(--font-size-body-copy-condensed);
+        line-height: var(--line-height-small);
+        letter-spacing: var(--letter-spacing-body-copy-condensed);
+        color: #192631 !important;
+        @extend .ml-0;
+    }
+    ::ng-deep .p-dialog.p-confirm-dialog .p-dialog-header-close span {
+        color: #1D2C38 !important;
+    }
+    .footer-dialog {
+        @extend .flex;
+        @extend .align-items-center;
+        justify-content: end;
+        @extend .flex-row-reverse;
+    }
+
+    .exit-btn {
+        @extend .border-none;
+        background: var(--c-warning-50);
+        height: 2.5rem;
+        font-family: var(--font-sans-serif);
+        font-style: var(--font-weight-regular);
+        font-size: var(--font-size-body-copy-condensed);
+        font-weight: 500;
+        line-height: var(--line-height-small);
+        color: var(--c-neutral-00);
+        padding: 0.5rem 1rem;
+        @extend .border-round-lg;
+        @extend .mr-0;
+        @extend .ml-2;
+        width: 3.625rem;
+    }
+
+    .cancel-btn {
+        background: var(--c-neutral-00);
+        @extend .border-none;
+        @extend .mt-0;
+        width: 4.9375rem;
+    }
+
+    .cancel-btn ::ng-deep .p-button {
+        color: #1D2C38 !important;
+        font-family: var(--font-sans-serif);
+        font-style: var(--font-weight-regular);
+        font-size: var(--font-size-body-copy-condensed) !important;
+        font-weight: 500;
+        line-height: var(--line-height-small);
+        background-color: transparent;
+        border-color: transparent;
+        @extend .mr-0;
+        border: none !important;
+    }
+
+    .cancel-btn ::ng-deep .p-button:focus,
+    .exit-btn ::ng-deep .p-button:focus {
+        box-shadow: none;
+    }
+
+    ::ng-deep .p-dialog.p-confirm-dialog .p-confirm-dialog-icon {
+        font-size: var(--font-size-h2) !important;
+        @extend .absolute;
+        top: 0;
+        margin-top: 1.5rem;
+        margin-right: 0.75rem;
+        color: var(--c-warning-50);
+    }
+
+    ::ng-deep button.p-ripple.p-element.p-button.p-component.p-disabled {
+        background-color: var(--c-neutral-10);
+        color: var(--c-neutral-40);
+        border: 0.063rem solid var(--c-neutral-10);
+    }
+
+    ::ng-deep button.p-disabled i {
+        color: var(--c-neutral-40);
+    }
+
+    ::ng-deep .p-dialog-mask .p-dialog {
+        border: none !important;
+    }
+
+    ::ng-deep .createNewCardBtn button {
+        background-color: var(--c-neutral-00) !important;
+        border-radius: 0.5rem;
+        color: var(--c-brandprimary-50);
+        border: none !important;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.25rem;
+    }
+
+    ::ng-deep .createNewCardBtn button:hover {
+        background: #E0E7FF !important;
+    }
+
+    ::ng-deep .p-component-overlay {
+        border-radius: 0.5rem 0.5rem 0 0 !important;
+    }
+
+}
+
+.number-dot {
+    margin-right: 0.375rem;
+}
+
+.processing-dot {
+    background: var(--c-neutral-70);
+}
+
+.virtual-header {
+    padding-right: 1rem;
+}
+
+.p-title-new-card {
+    @extend .w-full;
+    @extend .flex;
+    @extend .justify-content-center;
+    @extend .align-items-center;
+}
+
+.next-arrow {
+    @extend .ml-2;
+    font-style: var(--font-weight-regular);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-body-copy-condensed);
+    line-height: 0.875rem;
+}
+
+.p-dialog-footer ::ng-deep .p-button:focus {
+    box-shadow: none !important;
+}
+
+@media screen and (max-width: 47.938rem) {
+    .mccs-back {
+        display: none;
+    }
+
+    .close-icon-padding {
+        margin-right: 0;
+    }
+
+    ::ng-deep .p-dialog .p-dialog-footer button {
+        width: 100% !important;
+        float: inherit !important;
+        margin-right: 0 !important;
+        justify-content: center;
+    }
+
+    ::ng-deep .p-dialog .p-dialog-footer {
+        height: auto !important;
+    }
+
+    .add-payment-modal {
+        ::ng-deep .p-dialog-mask .p-dialog {
+            border: none !important;
+            min-width: 23.438rem !important;
+        }
+    }
+
+    ::ng-deep .p-dialog-mask .p-dialog {
+        top: 1rem;
+        max-height: 100%;
+    }
+
+    .add-payment-modal {
+        ::ng-deep .createNewCardBtn button {
+            display: block;
+            color: #1D2C38;
+            margin-top: 8px !important;
+        }
+
+        ::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
+            padding-right: 0;
+            padding-left: 2rem;
+        }
+    }
+
+    .footer-bottom-fixed {
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 30rem) {
+    ::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
+        padding-right: 0rem !important;
+        padding-left: 0.75rem;
+    }
+}
+
+.p-dialog-footer ::ng-deep .p-button:focus {
+    box-shadow: none !important;
+}
+.add-payment-modal .header-top-fixed .p-title-new-card .btn-back{
+    padding: 4px 12px;
+    border-right: 1px solid #E4E6E9;
+    padding-right: 16px;
+    margin-right: 8px;
+} 
+.add-payment-modal .header-top-fixed .p-title-new-card .p-dialog-title{
+    padding-left: 8px;
+}

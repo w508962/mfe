@@ -1,0 +1,126 @@
+<form [formGroup]="paymentDetailsForm">
+    <div class="card card-inner-content">
+        <div class="col-6 card-col">
+            <div class="card-controls" autoid="payment_details_supplier_title">{{translocoData.supplierHeading}}
+                <span class="required-text">
+                    <span class="required-dot dot-top"></span>
+                    {{translocoData.required}}
+                </span>
+            </div>
+            <div class="field col-12" *ngIf="userHasMultipleOrgs && userOrgGroup">
+                <p-dropdown [options]="userOrgGroup.organizations!" optionLabel="name" optionValue="id"
+                    formControlName="organizationId" panelStyleClass="dropdown-group-user"
+                    (onChange)="organizationChanged($event)" autoid="payment_details_organization_group_dropdown">
+                </p-dropdown>
+            </div>
+            <div class="field col-12 filter-dropdown supplier-dropdown">
+                <p-dropdown [options]="suppliers" formControlName="selectedSupplierName"
+                    [(ngModel)]="selectedSupplierName" optionLabel="name" [filter]="true" filterBy="name"
+                    [showClear]="false" placeholder="Supplier" filterPlaceholder="Search"
+                    (onChange)="selectSupplierName($event)" panelStyleClass="dropdown-panel-supplier"
+                    autoid="payment_details_supplier_section_dropdown">
+                    <ng-template pTemplate="selectedItem">
+                        <div class="supplier-selected-item" *ngIf="selectedSupplierName">
+                            <div>{{ selectedSupplierName.supplierName }}</div>
+                        </div>
+                    </ng-template>
+                    <ng-template let-supplier pTemplate="supplierItem">
+                        <div class="supplier-item">
+                            <div>{{ supplier.supplierName }}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+
+            </div>
+            <div class="field col-12">
+                <h2 class="headerText" autoid="payment_details_payments_title">{{translocoData.payments}}</h2>
+                <div class="single-use-card-section">
+                    <div class="default-tag">
+                        <p-tag autoid="payment_details_default_tag">{{translocoData.default}}</p-tag>
+                    </div>
+                    <div class="payment-container">
+                        <div class="circle-one-icon" autoid="payment_details_circle_one_icon"><i
+                                class="fa-regular fa-circle-1"></i></div>
+                        <div class="single-use-card" autoid="payment_details_single_use_card_text">
+                            {{translocoData.singleUseCard}}</div>
+                        <div class="available-tex" autoid="payment_details_available_tex_text">
+                            {{translocoData.availableImmediately}}</div>
+                    </div>
+
+                </div>
+                <div class="formgroup-inline formgroup">
+                    <div class="col inputFormField inputformAdjust">
+                        <span class="p-float-label formControlInputs">
+                            <p-calendar [defaultDate]="minDate" [minDate]="minDate" inputId="validFrom"
+                                dateFormat="M dd, yy" formControlName="validFrom" [showIcon]="true" icon="fa-calendar"
+                                autoid="payment_input_valid_from" (ngModelChange)="updateValidThruDate($event)">
+                            </p-calendar>
+                            <label for="validFrom" autoid="label_payment_vaid_from" class="label-focus">
+                                <span class="required-dot"></span>
+                                {{translocoData.effectivefrom}}</label>
+                        </span>
+                        <small
+                            *ngIf="!paymentDetailsForm.controls['validFrom'].valid && paymentDetailsForm.controls['validFrom'].dirty"
+                            class="p-error block" autoid="payment_error_msg_valid_from">{{translocoData.validFrom}}
+                            {{translocoData.is}}
+                            {{translocoData.s_required}}</small>
+                        <small
+                            *ngIf="!paymentDetailsForm.controls['validFrom'].valid && paymentDetailsForm.controls['validFrom'].dirty && paymentDetailsForm.controls['validFrom'].errors?.['incorrect']"
+                            class="p-error block"
+                            autoid="payment_error_msg_valid_from_date">{{translocoData.datepickererrormessage}}
+                        </small>
+                    </div>
+                    <div class="col validTo">
+                        <span class="p-float-label inputFormField">
+                            <p-calendar autoid="input_payment_valid_thru" inputId="validThru"
+                                [minDate]="effectiveMinDate"
+                                [ngClass]="{'input-error': paymentDetailsForm.controls['validFrom'].dirty && paymentDetailsForm.controls['validThru'].hasError('validThruIncorrect')}"
+                                dateFormat="M dd, yy" formControlName="validThru" [showIcon]="true" icon="fa-calendar">
+                            </p-calendar>
+                            <label for="validThru" autoid="label_payment_valid_thru" class="label-focus">
+                                <span class="required-dot"></span>
+                                {{translocoData.effectivethru}}
+                            </label>
+                        </span>
+                        <small
+                            *ngIf="!paymentDetailsForm.controls['validThru'].valid && paymentDetailsForm.controls['validThru'].dirty && checkIsValid()"
+                            class="p-error block" autoid="payment_error_msg_valid_thru">{{translocoData.validThru}}
+                            {{translocoData.is}}
+                            {{translocoData.s_required}}</small>
+                        <small
+                            *ngIf="!paymentDetailsForm.controls['validThru'].valid && paymentDetailsForm.controls['validThru'].dirty && paymentDetailsForm.controls['validThru'].errors?.['incorrect'] && !checkIsValid()"
+                            class="p-error block"
+                            autoid="payment_error_msg_valid_thru_date">{{translocoData.datepickererrormessage}}
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-12 formgroup mt-3 mcc-field">
+                    <input pInputText placeholder="{{translocoData.mcc}}" [attr.disabled]="true"
+                        formControlName="mccField" autoid="input_payment_mcc">
+                </div>
+
+                <div class="delivery-section">
+                    <div class="card-controls" autoid="payment_details_delivery_title">{{translocoData.delivery}}</div>
+                    <div class="field col-12">
+                        <span class="p-float-label">
+                            <p-chips [(ngModel)]="selectedEmail" separator="," formControlName="selectedEmail"
+                                autoid="payment_details_delivery_email" [disabled]="true">
+                            </p-chips>
+                            <label for="email" autoid="label_payment_details_email">{{translocoData.email}}</label>
+                        </span>
+                    </div>
+                    <div class="field col-12">
+                        <div>
+                            <span>
+                                <input pInputText placeholder="{{translocoData.fax}}" [(ngModel)]="selectedFax"
+                                    [attr.disabled]="true" formControlName="selectedFax" [pKeyFilter]="faxSpecial"
+                                    autoid="input_payment_details_fax">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+<div class="container add-payment-modal" id="create_payment_modal">
+    <div class="p-dialog-header header-top-fixed" autoid="new_payment_dialog_header_top_fixed">
+        <div class="p-title-new-card">
+            <a class="btn-back"  *ngIf="currentPage !=='paymentDetails'" (click)="handleBackButton()">
+                <i class="pi pi-arrow-left" autoid="dialog_back_buttion_icon"></i>
+                <span class="mccs-back" autoid="dialog_back_buttion_label">{{displaydata.back}}</span>
+            </a>
+            <div class="p-dialog-title" autoid="payment_workspace_dialog_title">{{displaydata.newPaymentTitle}}</div>
+            <div class="close-icon" (click)="closeModal()"><i class="fa-regular fa-times" autoid="payment_workspace_close_icon"></i></div>
+        </div>
+    </div>
+    <div class="workspace-content">
+        <payment-payment-details *ngIf="currentPage==='paymentDetails'" (firstStepComplete)="firstStepComplete($event)"
+            [existingFormValues]="sendExistingFormValues">
+        </payment-payment-details>
+        <payment-invoice-details *ngIf="currentPage==='invoiceDetails'"> </payment-invoice-details>
+        <payment-review-payment *ngIf="currentPage==='reviewPayment'"> </payment-review-payment>
+    </div>
+    <div class="p-dialog-footer footer-bottom-fixed">
+        <button pButton type="text" autoid="payment_workspace_footer_next_button" (click)="handleSubmit()"> {{currentPage==='reviewPayment'?displaydata.createPayment:displaydata.next}}
+            <i class="fa-solid fa-arrow-right next-arrow"  *ngIf="currentPage !=='reviewPayment'"  autoid="payment_workspace_footer_next_button_icon"></i>
+        </button>
+    </div>
+
+    <p-confirmDialog autoid="dialog_new_payment_confirmdialog" [blockScroll]="true" key="positionDialog" position="top" [baseZIndex]="10000">
+        <ng-template pTemplate="footer">
+            <p-button autoid="button_new_payment_cancel" class="btn-next cancel-btn" (click)="cancel()"
+            type="submit">{{displaydata.cancel}}</p-button>
+            <p-button autoid="button_new_payment_exit" class="btn-next exit-btn" type="submit"
+            (click)="closedialog()">{{displaydata.exit}}</p-button>
+        </ng-template>
+    </p-confirmDialog>
+</div>

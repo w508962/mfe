@@ -1,0 +1,331 @@
+@use 'primeflex/primeflex.scss';
+
+.payments-header ::ng-deep yeti-header .div-header {
+	height: 2.4375rem !important;
+	padding: 1rem 1.5rem !important;
+	position: relative;
+}
+.payments-header ::ng-deep yeti-header .div-header .div-title{
+	position: absolute;
+	top: 1.1875rem;
+	font-family: var(--font-sans-serif);
+	font-style: var(--font-weight-regular);
+	font-weight: 500;
+	font-size: var(--font-size-h2);
+	line-height: var(--line-height-medium);
+	color: #1D2C38;
+}
+::ng-deep .contentClass .payment-template yeti-header .div-header .div-title {
+	left: 1.5rem;
+}
+.payements-header ::ng-deep #page-template-content-container {
+	overflow: hidden;
+}
+.payment-template ::ng-deep .div-button {
+	display: flex;
+}
+.payment-template ::ng-deep .div-button button {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	font-family: var(--font-sans-serif) !important;
+	font-size: var(--font-size-body-copy-condensed);
+	font-style: var(--font-weight-regular);
+	font-weight: 500;
+    line-height: var(--line-height-small) !important;
+	letter-spacing: var(--letter-spacing-caption-2);
+	padding: 0.5rem 1rem !important;
+	border-radius: 0.5rem !important;
+	height: 2.5rem !important;
+
+}
+.payment-template ::ng-deep .div-button button.p-button-outlined {
+	width: 6.375rem !important;
+	margin-right: 0.5rem !important;
+	display: flex;
+	border: 0.0625rem solid rgb(29, 44, 56) !important;
+}
+.payment-template ::ng-deep .div-button button.p-plus-button {
+	width: 7.0625rem !important;
+    @extend .flex;
+}
+.payment-template ::ng-deep .div-button button i {
+	font-family: "Font Awesome 6 Pro" !important;
+	font-size: var(--font-size-body-copy) !important;
+	font-style: var(--font-weight-regular) !important;
+	font-weight: var(--font-weight-regular) !important;
+	line-height: var(--line-height-xsmall) !important;
+}
+.payment-template ::ng-deep .div-button button.p-button-outlined i {
+	color: #1D2C38;
+}
+
+.header-actions {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 1rem;
+	right: 16.5rem;
+	z-index: 2;
+}
+.payment-template ::ng-deep .div-button button.p-button-plus {
+	width: 7.0625rem !important;
+	padding: 0.5rem 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.payment-action yeti-search-and-filter ::ng-deep .search-input-container {
+	width: 16.0625rem;
+}
+.payment-table {
+	height: calc(100vh - 7.375rem);
+}
+.payment-table-section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    padding: 1.5rem;
+    margin-top: 0;
+	left: 0;
+    top: 0;
+}
+.payment-table-section ::ng-deep >section> section {
+    border-top: none;
+	border-bottom: none;
+	border: 0.0625rem solid #E4E6E9;
+}
+.payment-table-section ::ng-deep >section> section::before {
+    border-top: 0.0625rem solid #E4E6E9 !important;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row{
+	outline:none !important;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll {
+	overflow: hidden;
+	border-radius: 0.5rem;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .p-datatable-wrapper table .p-datatable-thead {
+	border-bottom: 0.0625rem solid #E4E6E9;
+	position: sticky;
+	top: 0;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .p-datatable-wrapper table thead tr th {
+	background: #FBFBFB;
+	color: #1D2C38;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .p-datatable-wrapper table thead tr .checkbox-cell {
+	padding: 0 0.5rem 0 1rem !important;
+}
+.checkbox-cell ::ng-deep p-tableheadercheckbox p-tristatecheckbox .p-checkbox {
+	background: #ffffff;
+}
+.payment-table-section ::ng-deep p-table .p-datatable .paginator-wrapper>div {
+	display: none;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .paginator-wrapper p-paginator .p-paginator-bottom {
+    border-color: #E4E6E9 !important;
+	border-bottom: none;
+    border-top: 0.0625rem solid #E4E6E9 !important;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .paginator-wrapper p-paginator .p-paginator-bottom p-dropdown .paginator-dropdown {
+	border-color: #A5AEB4;
+	padding: 0.5rem 2.375rem 0.5rem 1rem;
+    height: 2.5rem;
+	cursor: pointer !important;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .paginator-wrapper p-paginator .p-paginator-bottom p-dropdown .paginator-dropdown .p-dropdown-trigger{
+	font-size: var(--font-size-body-copy);
+    line-height: var(--line-height-xsmall);
+    color: #243746;
+    top: 0.75rem;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .paginator-wrapper p-paginator .p-paginator-bottom p-dropdown .paginator-dropdown label {
+	color: #1D2C38;
+	height: 1.5rem;
+    line-height: var(--line-height-small);
+    font-size: var(--font-size-body-copy-condensed);
+    width: 1.125rem;
+    letter-spacing: -0.006em;
+}
+.payment-table-section ::ng-deep >section> section .p-selectable-row .p-datatable-responsive-scroll .paginator-wrapper p-paginator .p-paginator-bottom button .p-paginator-icon {
+	color: #1D2C38;
+	cursor: pointer !important;
+}
+.payment-table-section ::ng-deep p-table .p-datatable .p-datatable-tbody > tr > td.row-actions > button {
+	left: 0 !important;
+    width: 2rem !important;
+    height: 2rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	cursor: pointer;
+	border: none !important;
+	outline: none !important;
+	background: transparent !important;
+}
+.payment-table-section ::ng-deep p-table .p-datatable .p-datatable-tbody > tr > td.row-actions > button:focus {
+	box-shadow: 0 0 0 0.125rem #59A9EE;
+	border-radius: 0.5rem;
+	outline: none !important;
+}
+.payment-table-section ::ng-deep p-table .p-datatable .p-datatable-tbody>tr>td.row-actions {
+	display: table-cell !important;
+	padding: 0 0.5rem !important;
+}
+
+.amount-align {
+	text-align: right !important;
+}
+.amount-align ::ng-deep p-sorticon {
+	position: inherit !important;
+}
+.row-actions i {
+	color: #1D2C38;
+}
+.fa-regular {
+	margin-right: 0.625rem;
+}
+
+
+::ng-deep .p-menuitem-link .p-menuitem-icon {
+	width:1rem;
+	height:1rem;
+	color: #1D2C38;
+	font-size: 1rem;
+}
+
+table-with-details-panel {
+	::ng-deep section {
+		@extend .mt-0;
+		@extend .h-full;
+	}
+	::ng-deep .p-datatable-responsive-scroll {
+		position: inherit !important; 
+	}
+    ::ng-deep aside.hidden {
+        display: none;
+    }
+}
+.th-amoutadjust {
+	text-align: right !important;
+}
+.payment-table-section ::ng-deep > section > section .p-selectable-row .p-datatable-responsive-scroll .paginator-wrapper p-paginator .p-paginator-bottom p-dropdown .paginator-dropdown .p-dropdown-label {
+	line-height: 1.375rem;
+}
+.tr-payments {
+	cursor: pointer;
+}
+::ng-deep .p-tieredmenu.p-tieredmenu-overlay {
+	width: 13rem;
+}
+::ng-deep .p-tieredmenu .p-menuitem-link .p-menuitem-text {
+	height: 1.5rem;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 0.875rem;
+	line-height: 1.5rem;
+	letter-spacing: -0.006em;
+	color: #1D2C38;
+}
+
+::ng-deep .p-tieredmenu .p-menuitem-link{
+	padding: 0.5rem 0.75rem
+}
+
+@media screen and (max-width: 79.9375rem) {
+	.payment-template {
+		::ng-deep .div-header {
+    		border-bottom: 0.0625rem solid #E4E6E9 !important;
+			justify-content: center !important;
+			align-items: center !important;
+		}
+		::ng-deep yeti-header .div-header {
+			padding: 1rem !important;
+		}
+	}
+	.payment-table-section {
+		padding: 1rem;
+	}
+	.scroll-div {
+		max-height: calc(100vh - 14rem) !important;
+	}
+}
+.emptypayment {
+	::ng-deep .empty-widget {
+		width: 28rem;
+		margin: 0 auto;
+	}
+	::ng-deep .empty-template {
+		margin-top: 0;
+		height: calc(100vh - 4.063rem) !important;
+	}
+	::ng-deep .empty-template .empty-widget-title {
+		margin-top: 1.5rem !important;
+		margin-bottom: 1rem !important;
+		color: #1D2C38 !important;
+	}
+	::ng-deep .empty-template .empty-widget-desc {
+		color: #243746 !important;
+	}
+	::ng-deep .empty-template .empty-widget-buttons button {
+		width: 7.0625rem;
+		padding: 0.5rem 1rem !important;
+		border-color: #0058A3 !important;
+	}
+	::ng-deep .empty-template .empty-widget-buttons button span {
+		color: #0058A3 !important;
+	}
+	::ng-deep .empty-template .empty-widget-buttons button .p-button-icon {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	::ng-deep .empty-template .empty-widget-image img {
+		width: 12rem !important;
+		height: 12rem !important;
+	}
+}
+
+::ng-deep {
+    .p-dialog.file-upload-dialog {
+        width: 32rem;
+        max-height: calc(100% - 8rem);
+
+        .p-dialog-content {
+            max-height: 60.5rem;
+			@extend .border-round-bottom-lg;
+        }
+    }
+}
+::ng-deep [pButton].p-button-text span {
+    color: #1D2C38 !important;
+}
+::ng-deep [pButton].p-button-text:enabled:hover {
+	background: transparent !important;
+}
+.payment-table-section {
+	::ng-deep >section aside header {
+		border-bottom: none !important;
+	}
+	.open-layer-panel {
+		position: absolute;
+        visibility: hidden;
+    }
+	::ng-deep >section aside>div {
+		padding: inherit;
+		overflow: inherit;
+		height: inherit;
+	}
+	::ng-deep >section aside>div>section {
+		margin-top: 3rem !important;
+	}
+}
+.scroll-div {
+    padding: 1.5rem;
+    overflow: auto;
+    scroll-behavior: smooth;
+    max-height: calc(100vh - 15rem);
+}

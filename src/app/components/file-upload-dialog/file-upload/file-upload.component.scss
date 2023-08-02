@@ -1,0 +1,56 @@
+@use 'primeflex/primeflex.scss';
+
+:host ::ng-deep .p-fileupload {
+	.p-fileupload-buttonbar {
+		visibility: hidden;
+		height: 0;
+		padding: 0;
+	}
+
+	.p-fileupload-content {
+		border: 1px dashed var(--phoenix-base-color-slate-blue-30);
+		border-radius: 0.5rem;
+		background-color: var(--phoenix-base-color-slate-blue-05);
+	}
+
+	.p-fileupload-files {
+		display: none;
+	}
+
+	p-progressbar {
+		display: none;
+	}
+}
+
+.file-upload-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.upload-label {
+		font-weight: 400;
+		font-size: var(--body-condensed-font-size);
+		color: var(--phoenix-base-color-slate-blue-80);
+		margin-left: 0.2rem;
+	}
+
+	.drag-drop-label {
+		font-weight: 400;
+		font-size: var(--caption-1-font-size);
+		color: var(--phoenix-base-color-slate-blue-80);
+	}
+
+	.browse-label {
+		font-weight: 400;
+		font-size: var(--caption-1-font-size);
+		color: var(--phoenix-base-color-primary-50);
+		cursor: pointer;
+	}
+}
+
+.file-limits {
+	font-size: 0.625rem;
+	line-height: 1rem;
+	@extend .mt-2;
+	@extend .text-center;
+}

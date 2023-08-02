@@ -1,0 +1,101 @@
+<p-toast key="payments-notification" position="top-right" showTransitionOptions="600ms" [baseZIndex]="10"
+    [preventOpenDuplicates]="true"></p-toast>
+<div class="payment-template" [ngClass]="isOverlayPanel ? 'background-overlay' : 'hide-overlay'">
+    <yeti-page-template [headerButtons]="headerButtons" (clickedButton)="buttonClickedEvent($event)" headerAutoID="payments_title_header" [headerTitle]="displaydata.payments"
+        [isLoading]="isloading" class="payments-header">
+        <div class="emptypayment">
+            <div class="empty-widget" *ngIf="data.length === 0 && !isloading">
+                <yeti-empty-widget [image]="widgetImage" [desc]="widgetDesc" [title]="widgetTitle" [displayDropDown]="false"
+                    [attr.autoid]="'selector_payments_empty_widget'" [buttonDesc]="widgetButton" [buttonIcon]="widgetButtonIcon"> </yeti-empty-widget>
+            </div>
+        
+        </div>
+        <div class="header-actions payment-action" slot="headerContent" >
+            <yeti-search-and-filter></yeti-search-and-filter>
+        </div>
+        <div class="payment-table" *ngIf="data.length !== 0">
+            <table-with-details-panel class="payment-table-section" [data]="data" #tablewithdetailspanel
+                [panelMenuActions]="panelMenuActions">
+                <ng-template container="table">
+                    <p-table #dt [value]="data" [rows]="20"  autoid="table_payments_landing" responsiveLayout="scroll" [paginator]="true"  pSelectableRow="true"
+                        sortField="lastActivityDate" showHeaderActions="true" [rowsPerPageOptions]="[10, 20, 50, 100]"
+                        [showFirstLastIcon]="false"  [sortOrder]="-1" [globalFilterFields]="
+                    [
+                    'Last activity date',
+                    'Supplier',
+                    'Payment method',
+                    'Payment amount',
+                    'Transaction amount',
+                    'Status',
+                    ]
+                ">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="checkbox-cell">
+                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                </th>
+                                <th pSortableColumn="lastActivityDate" >
+                                    {{displaydata.lastActivityDate}}
+                                    <p-sortIcon field="lastActivityDate" showSortIconByDefault="true" defaultSortOrder="-1"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="supplier">
+                                    {{displaydata.supplier}}
+                                    <p-sortIcon field="supplier"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="paymentMethod">
+                                    {{displaydata.paymentMethod}}
+                                    <p-sortIcon field="paymentMethod"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="paymentAmount" class="th-amoutadjust">
+                                    {{displaydata.paymentAmount}}
+                                    <p-sortIcon field="paymentAmount"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="transactionAmount" class="th-amoutadjust">
+                                    {{displaydata.transactionAmount}}
+                                    <p-sortIcon field="transactionAmount"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="status">
+                                    {{displaydata.status}}
+                                    <p-sortIcon field="status"></p-sortIcon>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-row>
+                            <tr #row pContextMenuRow="true" id="row{{row.id}}" class="tr-payments">
+                                <td class="checkbox-cell">
+                                    <p-tableCheckbox [value]="row"></p-tableCheckbox>
+                                </td>
+                                <td>{{row.lastActivityDate  | date:"mediumDate"}}</td>
+                                <td>{{row.supplier}}</td>
+                                <td>{{row.paymentMethod}}</td>
+                                <td class="th-amoutadjust">{{row.paymentAmount}}</td>
+                                <td class="th-amoutadjust">{{row.transactionAmount}}</td>
+                                <td>{{row.paymentStatus}}</td>
+                                <td class="row-actions">
+                                    <button>
+                                        <i class="pi pi-ellipsis-v" #btn (click)="rowActionMenu.toggle($event);rowKebabClick()"></i>
+                                        <p-tieredMenu #rowActionMenu [model]="items" [popup]="true"
+                                            closeOnEscape="closeTieredMenu" appendTo="body"></p-tieredMenu>
+                                  </button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+
+                </ng-template>
+                   <ng-template container="panel-layer-1" autoid="side-panel-open-one" let-selectedRow="selectedRow">
+                    <button #openLayer2 data-action="open-panel-layer-2" class="open-layer-panel"></button>
+                    <div class="scroll-div" #scrollDiv>
+                        <div>
+                            <yeti-payment-details [activeTabIndex]="0"></yeti-payment-details>
+                        </div>
+                    </div>
+                </ng-template>
+
+            
+
+            </table-with-details-panel>
+        </div>
+    </yeti-page-template>
+</div>
