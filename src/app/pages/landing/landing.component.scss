@@ -329,3 +329,10 @@ table-with-details-panel {
     scroll-behavior: smooth;
     max-height: calc(100vh - 15rem);
 }
+.payment-template {
+	table-with-details-panel::ng-deep >section aside header>div button, table-with-details-panel>section aside header>div [pButton].p-button-text {
+		top: 0.5rem !important;
+		width: 2rem !important;
+		height: 2rem !important;
+	}
+}
